@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="th" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tontamcard (ต้นแตมการ์ด) - ร้านขายการ์ด</title>
+    
+    <!-- Google Fonts: Kanit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS Script -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Kanit', 'sans-serif'],
+            },
+            colors: {
+              pastelBg: '#FBEFEF',
+              pastelCard: '#FFE2E2',
+              pastelBorder: '#F5CBCB',
+              pastelPurple: '#C5B3D3',
+              pastelDark: '#4A3E50',
+              pastelDarkSoft: '#6B5B72',
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body class="bg-[#FBEFEF] text-[#4A3E50] font-sans antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

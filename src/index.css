@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  background-color: #FBEFEF;
+  color: #4A3E50;
+  font-family: 'Kanit', sans-serif;
+}
+
+/* Simple Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FBEFEF;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #F5CBCB;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C5B3D3;
+}
