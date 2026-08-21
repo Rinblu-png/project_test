@@ -1,38 +1,38 @@
 import React from 'react';
 import ProductCard from './ProductCard';
 
-// ส่วนของสินค้าแนะนำ (Recommended Products Component)
+// ส่วนของสินค้าแนะนำ (Recommended Products Component - Mobile Responsive 2-Columns)
 export default function RecommendedSection({ products, onOpenDetail, onGoToProducts }) {
-  // กรองเฉพาะสินค้าที่เป็นสินค้าแนะนำ (isRecommended: true)
   const recommendedProducts = products.filter(p => p.isRecommended);
 
   return (
-    <section className="max-w-5xl mx-auto my-8 px-4">
+    <section className="container my-4">
       
       {/* หัวข้อส่วนสินค้าแนะนำ */}
-      <div className="border-b-2 border-[#F5CBCB] pb-3 mb-6">
-        <h2 className="text-xl font-bold text-[#4A3E50]">
+      <div className="border-bottom border-2 border-theme pb-2 mb-4">
+        <h2 className="fw-bold text-theme-dark fs-4 mb-1">
           สินค้าแนะนำ
         </h2>
-        <p className="text-xs text-[#6B5B72]">รายการการ์ดเกมยอดนิยมที่แนะนำประจำสัปดาห์</p>
+        <p className="text-theme-muted small m-0">รายการการ์ดเกมยอดนิยมที่แนะนำประจำสัปดาห์</p>
       </div>
 
-      {/* แสดงรายการการ์ดสินค้าแนะนำ */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+      {/* กริดแสดงรายการสินค้าแนะนำ (รองรับมือถือ 2 คอลัมน์ แท็บเล็ต 3 คอลัมน์ คอมพิวเตอร์ 4 คอลัมน์) */}
+      <div className="row g-2 g-sm-3">
         {recommendedProducts.map(product => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            onOpenDetail={onOpenDetail}
-          />
+          <div key={product.id} className="col-6 col-sm-6 col-md-4 col-lg-3">
+            <ProductCard
+              product={product}
+              onOpenDetail={onOpenDetail}
+            />
+          </div>
         ))}
       </div>
 
       {/* ปุ่มไปยังหน้าสินค้าทั้งหมด */}
-      <div className="mt-8 text-center">
+      <div className="mt-4 text-center">
         <button
           onClick={onGoToProducts}
-          className="px-8 py-3 bg-[#C5B3D3] hover:bg-[#b09cc0] text-white font-bold text-xs rounded-xl shadow-sm transition-colors"
+          className="btn btn-theme-primary btn-sm px-4 py-2.5 rounded-3 shadow-sm"
         >
           ไปยังหน้าสินค้าทั้งหมด ({products.length} รายการ) &rarr;
         </button>

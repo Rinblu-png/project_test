@@ -1,49 +1,49 @@
 import React from 'react';
 import { STORE_INFO } from '../data/products';
 
-// ส่วนของฟุตเตอร์ข้อมูลติดต่อ (Footer Component)
+// ส่วนของฟุตเตอร์ข้อมูลติดต่อ (Footer Component - Bootstrap 5)
 export default function Footer() {
   return (
-    <footer id="footer-contact" className="bg-[#FFE2E2] text-[#4A3E50] border-t-2 border-[#F5CBCB] pt-8 pb-6 mt-12">
-      <div className="max-w-5xl mx-auto px-4">
+    <footer id="footer-contact" className="bg-theme-light border-top border-2 border-theme pt-4 pb-3 mt-5">
+      <div className="container">
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-6 border-b border-[#F5CBCB]">
+        <div className="row g-4 pb-4 border-bottom border-theme">
           
           {/* ข้อมูลเกี่ยวกับร้านค้า */}
-          <div className="space-y-2">
-            <h3 className="text-lg font-bold text-[#4A3E50]">
+          <div className="col-12 col-md-6">
+            <h3 className="fw-bold text-theme-dark fs-5 mb-2">
               ร้าน {STORE_INFO.name} ({STORE_INFO.thName})
             </h3>
-            <p className="text-xs text-[#6B5B72]">
+            <p className="small text-theme-muted mb-1">
               {STORE_INFO.slogan}
             </p>
-            <p className="text-xs text-[#6B5B72]">
-              ที่อยู่: {STORE_INFO.address}
+            <p className="small text-theme-muted mb-1">
+              <strong>ที่อยู่:</strong> {STORE_INFO.address}
             </p>
-            <p className="text-xs text-[#6B5B72]">
-              เวลาทำการ: {STORE_INFO.hours}
+            <p className="small text-theme-muted mb-0">
+              <strong>เวลาทำการ:</strong> {STORE_INFO.hours}
             </p>
           </div>
 
           {/* ช่องทางติดต่อ (เบอร์โทร, instagram, facebook, gmail, tiktok) */}
-          <div className="space-y-2">
-            <h4 className="font-bold text-sm text-[#4A3E50]">
+          <div className="col-12 col-md-6">
+            <h4 className="fw-bold text-theme-dark fs-6 mb-2">
               ช่องทางการติดต่อร้านค้า:
             </h4>
 
-            <ul className="space-y-1.5 text-xs">
-              <li>📞 <strong>เบอร์โทรศัพท์:</strong> <a href={`tel:${STORE_INFO.phone}`} className="hover:underline">{STORE_INFO.phone}</a></li>
-              <li>✉️ <strong>Gmail:</strong> <a href={`mailto:${STORE_INFO.email}`} className="hover:underline">{STORE_INFO.email}</a></li>
-              <li>📷 <strong>Instagram:</strong> <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:underline">{STORE_INFO.instagram}</a></li>
-              <li>📘 <strong>Facebook:</strong> <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:underline">{STORE_INFO.facebook}</a></li>
-              <li>🎵 <strong>TikTok:</strong> <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="hover:underline">{STORE_INFO.tiktok}</a></li>
+            <ul className="list-unstyled small mb-0 space-y-1">
+              <li className="mb-1">📞 <strong>เบอร์โทรศัพท์:</strong> <a href={`tel:${STORE_INFO.phone}`} className="text-theme-dark text-decoration-none hover-underline">{STORE_INFO.phone}</a></li>
+              <li className="mb-1">✉️ <strong>Gmail:</strong> <a href={`mailto:${STORE_INFO.email}`} className="text-theme-dark text-decoration-none hover-underline">{STORE_INFO.email}</a></li>
+              <li className="mb-1">📷 <strong>Instagram:</strong> <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-theme-dark text-decoration-none hover-underline">{STORE_INFO.instagram}</a></li>
+              <li className="mb-1">📘 <strong>Facebook:</strong> <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-theme-dark text-decoration-none hover-underline">{STORE_INFO.facebook}</a></li>
+              <li className="mb-0">🎵 <strong>TikTok:</strong> <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="text-theme-dark text-decoration-none hover-underline">{STORE_INFO.tiktok}</a></li>
             </ul>
           </div>
 
         </div>
 
         {/* ลิขสิทธิ์ Footer */}
-        <div className="pt-4 text-center text-xs text-[#6B5B72]">
+        <div className="pt-3 text-center small text-theme-muted">
           © 2026 {STORE_INFO.name} ({STORE_INFO.thName}). All rights reserved.
         </div>
 

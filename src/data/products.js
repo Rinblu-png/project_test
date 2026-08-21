@@ -1,15 +1,16 @@
 // ข้อมูลร้านค้า (Store Information)
 export const STORE_INFO = {
-  name: 'tontamcard',
-  thName: 'ต้นแตมการ์ด',
-  slogan: 'ร้านจำหน่ายการ์ดเกมสะสม TCG การ์ดแท้ 100%',
+  name: 'CARD ZONE',
+  thName: 'การ์ดโซน',
+  slogan: 'TRADING CARD & BLIND BOX',
   phone: '089-777-8899',
-  email: 'contact.tontamcard@gmail.com',
-  instagram: '@tontamcard',
-  facebook: 'tontamcard.official',
-  tiktok: '@tontamcard_tcg',
+  email: 'contact@cardzone.com',
+  instagram: '@cardzone.official',
+  facebook: 'CardZone',
+  tiktok: '@cardzone_tcg',
   address: 'ศูนย์การค้าเมก้า พลาซ่า วังบูรพา กรุงเทพมหานคร',
-  hours: 'เปิดบริการทุกวัน: 10.30 น. - 19.30 น.'
+  hours: 'เปิดบริการทุกวัน: 10.30 น. - 19.30 น.',
+  logo: '/logo.jpg'
 };
 
 // ข้อมูลแบนเนอร์โปรโมชั่น (Promotion Banners)

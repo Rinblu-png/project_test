@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PROMOTION_BANNERS } from '../data/products';
 
-// ส่วนของแบนเนอร์โปรโมชั่น (Promotion Banner Component)
+// ส่วนของแบนเนอร์โปรโมชั่น (Promotion Banner Component - Bootstrap 5)
 export default function BannerSlider({ onGoToProducts }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -16,50 +16,57 @@ export default function BannerSlider({ onGoToProducts }) {
   };
 
   return (
-    <section className="max-w-5xl mx-auto my-6 px-4">
-      <div className="bg-[#FFE2E2] border-2 border-[#F5CBCB] rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6 relative shadow-sm">
-        
-        {/* รูปภาพแบนเนอร์ */}
-        <div className="w-full md:w-1/2 h-56 rounded-xl overflow-hidden border border-[#F5CBCB]">
-          <img 
-            src={banner.image} 
-            alt={banner.title}
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        {/* ข้อความและปุ่มกดแบนเนอร์ */}
-        <div className="w-full md:w-1/2 space-y-3">
-          <span className="inline-block px-3 py-1 bg-[#F5CBCB] text-[#4A3E50] text-xs font-bold rounded-full">
-            {banner.tag}
-          </span>
-          <h2 className="text-2xl font-bold text-[#4A3E50]">
-            {banner.title}
-          </h2>
-          <p className="text-xs text-[#6B5B72]">
-            {banner.subtitle}
-          </p>
-          <div className="pt-2">
-            <button
-              onClick={onGoToProducts}
-              className="px-6 py-2.5 bg-[#C5B3D3] hover:bg-[#b09cc0] text-white font-bold text-xs rounded-xl transition-colors shadow-sm"
-            >
-              {banner.buttonText} &rarr;
-            </button>
+    <section className="container my-4">
+      <div className="card card-theme border-2 border-theme p-3 p-md-4 position-relative shadow-sm">
+        <div className="row align-items-center g-4">
+          
+          {/* รูปภาพแบนเนอร์ */}
+          <div className="col-12 col-md-6">
+            <div className="rounded-3 overflow-hidden border border-theme" style={{ height: '220px' }}>
+              <img 
+                src={banner.image} 
+                alt={banner.title}
+                className="w-100 h-100 object-fit-cover"
+              />
+            </div>
           </div>
+
+          {/* ข้อความรายละเอียดแบนเนอร์ */}
+          <div className="col-12 col-md-6">
+            <span className="badge bg-theme-light text-theme-dark mb-2 px-3 py-2 rounded-pill">
+              {banner.tag}
+            </span>
+            <h2 className="fw-bold text-theme-dark mb-2 fs-3">
+              {banner.title}
+            </h2>
+            <p className="text-theme-muted small mb-3">
+              {banner.subtitle}
+            </p>
+            <div>
+              <button
+                onClick={onGoToProducts}
+                className="btn btn-theme-primary btn-sm px-4 py-2 rounded-3 shadow-sm"
+              >
+                {banner.buttonText} &rarr;
+              </button>
+            </div>
+          </div>
+
         </div>
 
-        {/* ปุ่มเลื่อนสไลด์ Left/Right */}
+        {/* ปุ่มเลื่อนซ้าย/ขวา */}
         <button
           onClick={prevBanner}
-          className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#FBEFEF] text-[#4A3E50] border border-[#F5CBCB] hover:bg-[#C5B3D3] hover:text-white font-bold flex items-center justify-center text-xs"
+          className="btn btn-theme-light position-absolute top-50 start-0 translate-middle-y rounded-circle d-flex align-items-center justify-content-center fw-bold shadow-sm"
+          style={{ width: '36px', height: '36px', left: '10px' }}
         >
           &lt;
         </button>
 
         <button
           onClick={nextBanner}
-          className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#FBEFEF] text-[#4A3E50] border border-[#F5CBCB] hover:bg-[#C5B3D3] hover:text-white font-bold flex items-center justify-center text-xs"
+          className="btn btn-theme-light position-absolute top-50 end-0 translate-middle-y rounded-circle d-flex align-items-center justify-content-center fw-bold shadow-sm"
+          style={{ width: '36px', height: '36px', right: '10px' }}
         >
           &gt;
         </button>

@@ -8,4 +8,8 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
+  server: {
+    host: true, // อนุญาตให้เข้าถึงจากทุกอุปกรณ์ในเครือข่ายเดียวกัน (Mobile, Tablet, PC)
+    port: 5173
+  }
 })

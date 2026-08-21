@@ -1,24 +1,179 @@
-body {
-  margin: 0;
-  background-color: #FBEFEF;
-  color: #4A3E50;
-  font-family: 'Kanit', sans-serif;
+/* src/index.css - Cyberpunk / Dark Card Zone Theme 
+   Colors:
+   #0D1117 - Very Dark Navy/Black (Background)
+   #16213E - Dark Blue (Surface / Cards)
+   #FFC300 - Cyber Yellow (Accents / Prices)
+   #00F5FF - Neon Cyan (Primary / Actions)
+*/
+
+:root {
+  --color-theme-bg: #0D1117;
+  --color-theme-surface: #16213E;
+  --color-theme-accent-cyan: #00F5FF;
+  --color-theme-accent-yellow: #FFC300;
+  
+  --color-text-main: #F8FAFC;
+  --color-text-muted: #94A3B8;
+  --color-border: #2A3B5C;
 }
 
-/* Simple Scrollbar */
-::-webkit-scrollbar {
+body {
+  background-color: var(--color-theme-bg);
+  color: var(--color-text-main);
+  font-family: 'Prompt', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base resets for Bootstrap */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text-main);
+}
+.card {
+  color: var(--color-text-main);
+  background-color: var(--color-theme-surface);
+}
+
+/* Overriding some bootstrap utility classes used in our components to fit the dark theme */
+.bg-white { background-color: var(--color-theme-surface) !important; color: var(--color-text-main) !important; }
+.text-muted { color: var(--color-text-muted) !important; }
+.text-success { color: var(--color-theme-accent-cyan) !important; text-shadow: 0 0 5px rgba(0, 245, 255, 0.4); }
+.text-danger { color: #FF4D4D !important; }
+.text-warning { color: var(--color-theme-accent-yellow) !important; }
+
+/* Custom Color Utilities */
+.bg-theme-bg { background-color: var(--color-theme-bg) !important; }
+.bg-theme-light, .bg-theme-header { background-color: var(--color-theme-surface) !important; color: var(--color-text-main) !important; }
+.bg-theme-primary { background-color: var(--color-theme-accent-cyan) !important; color: #0D1117 !important; }
+.bg-theme-secondary { background-color: var(--color-theme-accent-yellow) !important; color: #0D1117 !important; }
+.bg-theme-dark { background-color: var(--color-theme-bg) !important; color: var(--color-text-main) !important; }
+
+/* Text Utilities (Mapping old class names to new dark theme logic) */
+.text-theme-dark { color: var(--color-text-main) !important; } /* We map -dark to our light text color since it was main text */
+.text-theme-primary { color: var(--color-theme-accent-cyan) !important; }
+.text-theme-secondary { color: var(--color-theme-accent-yellow) !important; }
+.text-theme-muted { color: var(--color-text-muted) !important; }
+
+/* In the previous blue theme, we had some purple text used for prices. Let's make prices Cyber Yellow */
+.text-theme-purple, .text-theme-primary { 
+  color: var(--color-theme-accent-yellow) !important; 
+  text-shadow: 0 0 8px rgba(255, 195, 0, 0.3);
+}
+
+/* Border Utilities */
+.border-theme { border-color: var(--color-border) !important; }
+.border-theme.border-dashed { border-style: dashed !important; border-color: var(--color-border) !important; }
+
+/* Buttons */
+.btn-theme-primary {
+  background-color: var(--color-theme-accent-cyan) !important;
+  color: #0D1117 !important;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+  transition: all 0.2s ease;
+  font-weight: 700;
+}
+.btn-theme-primary:hover {
+  background-color: #00D5DD !important;
+  box-shadow: 0 0 18px rgba(0, 245, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+.btn-theme-light {
+  background-color: var(--color-theme-surface) !important;
+  color: var(--color-text-main) !important;
+  border: 1px solid var(--color-border);
+}
+.btn-theme-light:hover {
+  background-color: var(--color-border) !important;
+  color: var(--color-theme-accent-cyan) !important;
+}
+
+.btn-outline-theme-primary {
+  background-color: transparent !important;
+  color: var(--color-theme-accent-cyan) !important;
+  border: 2px solid var(--color-theme-accent-cyan) !important;
+  transition: all 0.2s ease;
+}
+.btn-outline-theme-primary:hover {
+  background-color: var(--color-theme-accent-cyan) !important;
+  color: #0D1117 !important;
+  box-shadow: 0 0 15px rgba(0, 245, 255, 0.5);
+}
+
+/* Secondary/Warning Button */
+.btn-theme-orange {
+  background-color: var(--color-theme-accent-yellow) !important; 
+  color: #0D1117 !important;
+  border: none;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(255, 195, 0, 0.3);
+  transition: all 0.2s ease;
+}
+.btn-theme-orange:hover {
+  background-color: #E6B000 !important;
+  box-shadow: 0 0 15px rgba(255, 195, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-theme-danger {
+  background-color: #FF4D4D !important; 
+  color: white !important;
+  border: none;
+  transition: all 0.2s;
+}
+.btn-theme-danger:hover {
+  background-color: #FF3333 !important;
+  box-shadow: 0 0 12px rgba(255, 77, 77, 0.4);
+}
+
+/* Cards */
+.card-theme {
+  border: 1px solid var(--color-border);
+  background-color: var(--color-theme-surface);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
+  border-radius: 0.75rem;
+}
+.card-theme:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 245, 255, 0.15);
+  border-color: var(--color-theme-accent-cyan);
+}
+
+/* Utilities for product images */
+.product-img-wrap {
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background-color: var(--color-theme-bg);
+}
+.product-img-wrap img {
+  transition: transform 0.3s ease;
+}
+.card-theme:hover .product-img-wrap img {
+  transform: scale(1.05);
+}
+
+/* Custom Animation */
+@keyframes bounce-soft {
+  0%, 100% { transform: translateY(-5%); }
+  50% { transform: translateY(0); }
+}
+.animate-bounce {
+  animation: bounce-soft 1s infinite;
+}
+
+/* Clean Custom Scrollbar (Dark mode) */
+.custom-scrollbar::-webkit-scrollbar {
   width: 8px;
 }
-
-::-webkit-scrollbar-track {
-  background: #FBEFEF;
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--color-theme-bg); 
 }
-
-::-webkit-scrollbar-thumb {
-  background: #F5CBCB;
-  border-radius: 4px;
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-theme-surface); 
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
 }
-
-::-webkit-scrollbar-thumb:hover {
-  background: #C5B3D3;
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-theme-accent-cyan); 
 }

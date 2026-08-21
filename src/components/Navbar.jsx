@@ -1,69 +1,92 @@
 import React from 'react';
 import { STORE_INFO } from '../data/products';
 
-// ส่วนของแถบเมนูด้านบน (Navbar)
-export default function Navbar({ currentPage, setCurrentPage }) {
+// ส่วนของแถบเมนูด้านบน (Navbar Component - Bootstrap 5)
+export default function Navbar({ currentPage, setCurrentPage, cartCount, setIsCartOpen }) {
   return (
-    <header className="bg-[#F5CBCB] border-b-2 border-[#F5CBCB] text-[#4A3E50] sticky top-0 z-40">
+    <header className="bg-theme-light border-bottom border-theme shadow-sm sticky-top">
       
-      {/* ข้อความแจ้งเตือนด้านบนสุด */}
-      <div className="bg-[#C5B3D3] text-[#4A3E50] text-xs py-1.5 px-4 text-center font-medium">
+      {/* แถบข้อความแจ้งเตือนด้านบนสุด */}
+      <div className="bg-theme-primary text-center py-1 text-white text-xs font-medium">
         ยินดีต้อนรับสู่ร้าน {STORE_INFO.name} ({STORE_INFO.thName}) - การ์ดแท้ 100%
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-        
-        {/* ชื่อร้านค้า (Logo) */}
-        <div 
-          onClick={() => setCurrentPage('home')}
-          className="cursor-pointer flex items-center gap-2"
-        >
-          <div className="w-9 h-9 rounded-lg bg-[#C5B3D3] flex items-center justify-center font-bold text-white text-lg">
-            T
-          </div>
-          <div>
-            <span className="text-2xl font-bold text-[#4A3E50]">
-              {STORE_INFO.name}
-            </span>
-            <span className="text-xs block text-[#6B5B72]">
-              {STORE_INFO.thName}
-            </span>
-          </div>
-        </div>
-
-        {/* ปุ่มเมนูนำทาง (Navigation Buttons) */}
-        <nav className="flex items-center gap-2 text-sm font-medium">
-          <button
+      <nav className="navbar navbar-expand container py-2">
+        <div className="container-fluid px-0 flex-nowrap justify-content-between align-items-center">
+          
+          {/* ชื่อร้านค้า (Brand Logo) */}
+          <div 
             onClick={() => setCurrentPage('home')}
-            className={`px-4 py-1.5 rounded-lg transition-colors ${
-              currentPage === 'home'
-                ? 'bg-[#C5B3D3] text-white font-bold'
-                : 'bg-[#FFE2E2] text-[#4A3E50] hover:bg-[#FBEFEF]'
-            }`}
+            className="navbar-brand text-theme-dark cursor-pointer d-flex align-items-center gap-2 m-0"
+            style={{ cursor: 'pointer' }}
           >
-            หน้าแรก
-          </button>
+            <img 
+              src={STORE_INFO.logo} 
+              alt={STORE_INFO.name} 
+              className="rounded-circle shadow-sm border border-theme" 
+              style={{ width: '48px', height: '48px', objectFit: 'cover', backgroundColor: 'white' }} 
+            />
+            <div className="lh-1">
+              <span className="fw-bold fs-4 text-theme-dark d-block">
+                {STORE_INFO.name}
+              </span>
+              <small className="text-theme-muted" style={{ fontSize: '0.75rem' }}>
+                {STORE_INFO.thName}
+              </small>
+            </div>
+          </div>
 
-          <button
-            onClick={() => setCurrentPage('products')}
-            className={`px-4 py-1.5 rounded-lg transition-colors ${
-              currentPage === 'products'
-                ? 'bg-[#C5B3D3] text-white font-bold'
-                : 'bg-[#FFE2E2] text-[#4A3E50] hover:bg-[#FBEFEF]'
-            }`}
-          >
-            หน้าสินค้า
-          </button>
+          {/* ปุ่มเมนูนำทาง และ ปุ่มตะกร้าสินค้า */}
+          <div className="d-flex align-items-center gap-2">
+            
+            <button
+              onClick={() => setCurrentPage('home')}
+              className={`btn btn-sm ${
+                currentPage === 'home'
+                  ? 'btn-theme-primary fw-bold shadow-sm'
+                  : 'btn-theme-light'
+              }`}
+            >
+              หน้าแรก
+            </button>
 
-          <a
-            href="#footer-contact"
-            className="px-4 py-1.5 rounded-lg bg-[#FFE2E2] text-[#4A3E50] hover:bg-[#FBEFEF] transition-colors"
-          >
-            ติดต่อเรา
-          </a>
-        </nav>
+            <button
+              onClick={() => setCurrentPage('products')}
+              className={`btn btn-sm ${
+                currentPage === 'products'
+                  ? 'btn-theme-primary fw-bold shadow-sm'
+                  : 'btn-theme-light'
+              }`}
+            >
+              หน้าสินค้า
+            </button>
 
-      </div>
+            <a
+              href="#footer-contact"
+              className="btn btn-sm btn-theme-light d-none d-sm-inline-block"
+            >
+              ติดต่อเรา
+            </a>
+
+            {/* ปุ่มตะกร้าสินค้า (Cart Button Badge) */}
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="btn btn-theme-primary btn-sm rounded-circle position-relative p-2 d-flex align-items-center justify-content-center shadow-sm"
+              style={{ width: '38px', height: '38px' }}
+              title="ตะกร้าสินค้า"
+            >
+              🛒
+              {cartCount > 0 && (
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger shadow-sm font-mono">
+                  {cartCount}
+                </span>
+              )}
+            </button>
+
+          </div>
+
+        </div>
+      </nav>
     </header>
   );
 }
