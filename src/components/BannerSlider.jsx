@@ -47,7 +47,7 @@ export default function BannerSlider({ onGoToProducts }) {
                 onClick={onGoToProducts}
                 className="btn btn-theme-primary btn-sm px-4 py-2 rounded-3 shadow-sm"
               >
-                {banner.buttonText} &rarr;
+                <i className="bi bi-search me-1"></i> {banner.buttonText}
               </button>
             </div>
           </div>
@@ -58,17 +58,17 @@ export default function BannerSlider({ onGoToProducts }) {
         <button
           onClick={prevBanner}
           className="btn btn-theme-light position-absolute top-50 start-0 translate-middle-y rounded-circle d-flex align-items-center justify-content-center fw-bold shadow-sm"
-          style={{ width: '36px', height: '36px', left: '10px' }}
+          style={{ width: '36px', height: '36px', marginLeft: '-15px', zIndex: 5 }}
         >
-          &lt;
+          <i className="bi bi-chevron-left"></i>
         </button>
 
         <button
           onClick={nextBanner}
           className="btn btn-theme-light position-absolute top-50 end-0 translate-middle-y rounded-circle d-flex align-items-center justify-content-center fw-bold shadow-sm"
-          style={{ width: '36px', height: '36px', right: '10px' }}
+          style={{ width: '36px', height: '36px', marginRight: '-15px', zIndex: 5 }}
         >
-          &gt;
+          <i className="bi bi-chevron-right"></i>
         </button>
 
       </div>

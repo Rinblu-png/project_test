@@ -47,7 +47,7 @@ export default function Navbar({ currentPage, setCurrentPage, cartCount, setIsCa
                   : 'btn-theme-light'
               }`}
             >
-              หน้าแรก
+              <i className="bi bi-house-door-fill me-1"></i> หน้าแรก
             </button>
 
             <button
@@ -58,14 +58,14 @@ export default function Navbar({ currentPage, setCurrentPage, cartCount, setIsCa
                   : 'btn-theme-light'
               }`}
             >
-              หน้าสินค้า
+              <i className="bi bi-box-seam-fill me-1"></i> หน้าสินค้า
             </button>
 
             <a
               href="#footer-contact"
               className="btn btn-sm btn-theme-light d-none d-sm-inline-block"
             >
-              ติดต่อเรา
+              <i className="bi bi-telephone-fill me-1"></i> ติดต่อเรา
             </a>
 
             {/* ปุ่มตะกร้าสินค้า (Cart Button Badge) */}
@@ -75,7 +75,7 @@ export default function Navbar({ currentPage, setCurrentPage, cartCount, setIsCa
               style={{ width: '38px', height: '38px' }}
               title="ตะกร้าสินค้า"
             >
-              🛒
+              <i className="bi bi-cart-fill fs-6 text-white"></i>
               {cartCount > 0 && (
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger shadow-sm font-mono">
                   {cartCount}

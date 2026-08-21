@@ -46,6 +46,12 @@ function App() {
     showToast(`เพิ่ม "${product.name}" ลงในตะกร้าเรียบร้อยแล้ว`);
   };
 
+  // ซื้อสินค้าทันที (Buy Now) - เพิ่มลงตะกร้าแล้วเปิดตะกร้าทันที
+  const handleBuyNow = (product) => {
+    handleAddToCart(product, 1);
+    setIsCartOpen(true);
+  };
+
   // ปรับเปลี่ยนจำนวนสินค้าในตะกร้า
   const handleUpdateQuantity = (productId, newQty) => {
     if (newQty <= 0) {
@@ -109,6 +115,8 @@ function App() {
             <RecommendedSection
               products={PRODUCTS}
               onOpenDetail={handleOpenProductDetail}
+              onAddToCart={handleAddToCart}
+              onBuyNow={handleBuyNow}
               onGoToProducts={() => {
                 setCurrentPage('products');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -120,6 +128,8 @@ function App() {
           <ProductGrid
             products={PRODUCTS}
             onOpenDetail={handleOpenProductDetail}
+            onAddToCart={handleAddToCart}
+            onBuyNow={handleBuyNow}
           />
         ) : (
           /* 3. หน้ารายละเอียดสินค้า (Product Detail Page) */

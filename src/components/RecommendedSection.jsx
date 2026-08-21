@@ -2,7 +2,7 @@ import React from 'react';
 import ProductCard from './ProductCard';
 
 // ส่วนของสินค้าแนะนำ (Recommended Products Component - Mobile Responsive 2-Columns)
-export default function RecommendedSection({ products, onOpenDetail, onGoToProducts }) {
+export default function RecommendedSection({ products, onOpenDetail, onAddToCart, onGoToProducts }) {
   const recommendedProducts = products.filter(p => p.isRecommended);
 
   return (
@@ -23,6 +23,7 @@ export default function RecommendedSection({ products, onOpenDetail, onGoToProdu
             <ProductCard
               product={product}
               onOpenDetail={onOpenDetail}
+              onAddToCart={onAddToCart}
             />
           </div>
         ))}
@@ -34,7 +35,7 @@ export default function RecommendedSection({ products, onOpenDetail, onGoToProdu
           onClick={onGoToProducts}
           className="btn btn-theme-primary btn-sm px-4 py-2.5 rounded-3 shadow-sm"
         >
-          ไปยังหน้าสินค้าทั้งหมด ({products.length} รายการ) &rarr;
+          ไปยังหน้าสินค้าทั้งหมด ({products.length} รายการ) <i className="bi bi-arrow-right-circle-fill ms-1"></i>
         </button>
       </div>
 

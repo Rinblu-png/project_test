@@ -73,18 +73,18 @@ export default function CartDrawer({ isOpen, onClose, cart, updateQuantity, remo
                   }}
                   className="btn btn-theme-primary rounded-pill px-4 py-2 w-100 fw-bold shadow-sm"
                 >
-                  เลือกซื้อสินค้าต่อ 💕
+                  <i className="bi bi-arrow-left-circle-fill me-1"></i> เลือกซื้อสินค้าต่อ
                 </button>
               </div>
             </div>
           ) : cart.length === 0 ? (
             /* เมื่อไม่มีสินค้าในตะกร้า */
             <div className="text-center py-5 text-theme-muted h-100 d-flex flex-column align-items-center justify-content-center">
-              <div className="fs-1 mb-3 opacity-50">🛒💨</div>
+              <div className="fs-1 mb-3 opacity-50"><i className="bi bi-cart-x"></i></div>
               <h5 className="fw-bold text-theme-dark opacity-75">อุ้ย! ตะกร้าว่างเปล่า</h5>
               <p className="small mb-4">ลองหาการ์ดที่ถูกใจใส่ตะกร้าดูสิครับ</p>
               <button onClick={onClose} className="btn btn-outline-theme-primary rounded-pill px-4 py-2">
-                ไปเลือกสินค้ากันเลย &rarr;
+                <i className="bi bi-shop me-1"></i> ไปเลือกสินค้ากันเลย &rarr;
               </button>
             </div>
           ) : (
@@ -96,10 +96,10 @@ export default function CartDrawer({ isOpen, onClose, cart, updateQuantity, remo
                   <button
                     onClick={() => removeFromCart(item.id)}
                     className="position-absolute top-0 end-0 mt-2 me-2 btn btn-link p-0 text-danger text-decoration-none bg-white rounded-circle d-flex align-items-center justify-content-center shadow-sm"
-                    style={{ width: '24px', height: '24px' }}
+                    style={{ width: '28px', height: '28px' }}
                     title="ลบสินค้า"
                   >
-                    <small className="fw-bold">✕</small>
+                    <i className="bi bi-trash-fill fs-6"></i>
                   </button>
 
                   <div className="d-flex gap-3 align-items-center">
@@ -184,7 +184,7 @@ export default function CartDrawer({ isOpen, onClose, cart, updateQuantity, remo
                   กำลังดำเนินการสั่งซื้อ...
                 </>
               ) : (
-                'ยืนยันการสั่งซื้อเลย ✨'
+                <><i className="bi bi-credit-card-fill fs-5"></i> ยืนยันการสั่งซื้อเลย ✨</>
               )}
             </button>
           </div>

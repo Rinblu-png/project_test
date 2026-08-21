@@ -1,10 +1,10 @@
 import React from 'react';
 
 // คอมโพเนนต์การ์ดสินค้าใช้ Bootstrap 5 (Product Card Component)
-export default function ProductCard({ product, onOpenDetail }) {
+export default function ProductCard({ product, onOpenDetail, onAddToCart, onBuyNow }) {
   // ตรวจสอบ 3 เงื่อนไขสินค้าคงเหลือ
-  const isOutOfStock = product.stock <= 0;           // เงื่อนไข 1: สินค้าหมด (0 ชิ้น)
-  const isLowStock = product.stock > 0 && product.stock <= 3; // เงื่อนไข 2: สินค้าใกล้หมด (1-3 ชิ้น)
+  const isOutOfStock = product.stock <= 0;
+  const isLowStock = product.stock > 0 && product.stock <= 3;
 
   return (
     <div className="card card-theme h-100 shadow-sm overflow-hidden p-2">
@@ -23,6 +23,11 @@ export default function ProductCard({ product, onOpenDetail }) {
         {product.rarity && (
           <span className="badge bg-theme-light text-theme-dark position-absolute top-0 start-0 m-2 font-mono">
             {product.rarity}
+          </span>
+        )}
+        {isLowStock && (
+          <span className="badge bg-warning text-dark position-absolute top-0 end-0 m-2">
+            <i className="bi bi-exclamation-triangle-fill me-1"></i>ใกล้หมด
           </span>
         )}
       </div>
@@ -51,39 +56,42 @@ export default function ProductCard({ product, onOpenDetail }) {
             </small>
           </div>
 
-          {/* ปุ่มสั่งซื้อ แยกตาม 3 เงื่อนไข (มีสินค้า, สินค้าใกล้หมด, สินค้าหมด) */}
+          {/* ปุ่ม 2 ปุ่ม */}
           <div className="pt-2 border-top border-theme">
             {isOutOfStock ? (
-              /* เงื่อนไข 1: สินค้าหมด (สีแดง) */
-              <button
-                disabled
-                className="btn btn-theme-danger btn-sm w-100 rounded-3 opacity-75"
-              >
-                สินค้าหมด (0 ชิ้น)
-              </button>
-            ) : isLowStock ? (
-              /* เงื่อนไข 2: สินค้าใกล้หมด (สีส้ม) */
-              <button
-                onClick={() => onOpenDetail(product)}
-                className="btn btn-theme-orange btn-sm w-100 rounded-3"
-              >
-                สินค้าใกล้หมด! ซื้อสินค้า (เหลือ {product.stock} ชิ้น)
+              <button disabled className="btn btn-theme-danger btn-sm w-100 rounded-3 opacity-75">
+                <i className="bi bi-x-circle-fill me-1"></i> สินค้าหมด
               </button>
             ) : (
-              /* เงื่อนไข 3: มีสินค้าปกติ (สีม่วงพาสเทล) */
-              <button
-                onClick={() => onOpenDetail(product)}
-                className="btn btn-theme-primary btn-sm w-100 rounded-3"
-              >
-                ซื้อสินค้า (เหลือ {product.stock} ชิ้น)
-              </button>
+              <div className="row g-1">
+                {/* ปุ่มซ้าย: ใส่ตะกร้า */}
+                <div className="col-6">
+                  <button
+                    onClick={(e) => { e.stopPropagation(); onAddToCart(product, 1); }}
+                    className="btn btn-theme-light btn-sm w-100 rounded-3"
+                    style={{ fontSize: '0.78rem' }}
+                    title="ใส่ตะกร้า"
+                  >
+                    <i className="bi bi-cart-plus-fill me-1"></i>ใส่ตะกร้า
+                  </button>
+                </div>
+                {/* ปุ่มขวา: ซื้อสินค้าเลย */}
+                <div className="col-6">
+                  <button
+                    onClick={(e) => { e.stopPropagation(); onBuyNow(product); }}
+                    className={`btn ${isLowStock ? 'btn-theme-orange' : 'btn-theme-primary'} btn-sm w-100 rounded-3`}
+                    style={{ fontSize: '0.78rem' }}
+                    title="ซื้อสินค้าเลย"
+                  >
+                    <i className="bi bi-lightning-fill me-1"></i>ซื้อสินค้า
+                  </button>
+                </div>
+              </div>
             )}
           </div>
 
         </div>
-
       </div>
-
     </div>
   );
 }
