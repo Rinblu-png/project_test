@@ -26,7 +26,7 @@ export default function ProductCard({ product, onOpenDetail, onAddToCart, onBuyN
           </span>
         )}
         {isLowStock && (
-          <span className="badge bg-warning text-dark position-absolute top-0 end-0 m-2">
+          <span className="badge badge-cool-indigo position-absolute top-0 end-0 m-2 shadow-sm">
             <i className="bi bi-exclamation-triangle-fill me-1"></i>ใกล้หมด
           </span>
         )}
@@ -37,21 +37,30 @@ export default function ProductCard({ product, onOpenDetail, onAddToCart, onBuyN
         <div>
           <h5 
             onClick={() => onOpenDetail(product)}
-            className="card-title text-theme-dark fw-bold fs-6 text-truncate mb-2"
+            className="card-title text-theme-dark fw-bold fs-6 text-truncate mb-1"
             style={{ cursor: 'pointer' }}
             title={product.name}
           >
             {product.name}
           </h5>
+
+          {/* ดาวรีวิวและคะแนนสินค้า (Star Ratings) */}
+          <div className="d-flex align-items-center gap-1 mb-1.5" style={{ fontSize: '0.74rem' }}>
+            <span className="text-warning">
+              <i className="bi bi-star-fill" style={{ color: '#FFD700' }}></i>
+            </span>
+            <span className="fw-bold text-theme-dark">{product.rating || 5.0}</span>
+            <span className="text-theme-muted">({product.reviewCount || 0} รีวิว)</span>
+          </div>
         </div>
 
         <div>
           {/* ราคาและจำนวนคงเหลือ */}
-          <div className="d-flex align-items-center justify-content-between my-2">
+          <div className="d-flex align-items-center justify-content-between my-1.5">
             <span className="fw-bold fs-6 text-theme-primary">
               ฿{product.price.toLocaleString()}
             </span>
-            <small className="text-theme-muted">
+            <small className="text-theme-muted" style={{ fontSize: '0.72rem' }}>
               คงเหลือ: <strong className="text-theme-dark">{product.stock} ชิ้น</strong>
             </small>
           </div>

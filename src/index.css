@@ -1,20 +1,27 @@
-/* src/index.css - Cyberpunk / Dark Card Zone Theme 
-   Colors:
-   #0D1117 - Very Dark Navy/Black (Background)
-   #16213E - Dark Blue (Surface / Cards)
-   #FFC300 - Cyber Yellow (Accents / Prices)
-   #00F5FF - Neon Cyan (Primary / Actions)
+/* src/index.css - Cool Tone Theme (ธีมโทนเย็น)
+   Colors (Cool Palette):
+   #0D1117 - Deep Navy/Black (Background)
+   #16213E - Dark Navy (Surface / Cards)
+   #091540 - Midnight Navy (Brand Dark)
+   #1B2CC1 - Royal Blue (Cool Brand Accent)
+   #7692FF - Periwinkle / Cool Indigo (Secondary Accent)
+   #00F5FF - Neon Cyan / Electric Blue (Primary Action)
+   #ABD2FA - Ice Blue (Soft Cool Accent)
+   #06D6A0 - Mint Teal (Cool Status)
 */
 
 :root {
   --color-theme-bg: #0D1117;
   --color-theme-surface: #16213E;
   --color-theme-accent-cyan: #00F5FF;
-  --color-theme-accent-yellow: #FFC300;
+  --color-theme-accent-blue: #7692FF;
+  --color-theme-royal-blue: #1B2CC1;
+  --color-theme-ice-blue: #ABD2FA;
+  --color-theme-mint: #06D6A0;
   
   --color-text-main: #F8FAFC;
   --color-text-muted: #94A3B8;
-  --color-border: #2A3B5C;
+  --color-border: #243456;
 }
 
 body {
@@ -34,97 +41,112 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--color-theme-surface);
 }
 
-/* Overriding some bootstrap utility classes used in our components to fit the dark theme */
+/* Overriding bootstrap utility classes for Cool Dark Theme */
 .bg-white { background-color: var(--color-theme-surface) !important; color: var(--color-text-main) !important; }
 .text-muted { color: var(--color-text-muted) !important; }
-.text-success { color: var(--color-theme-accent-cyan) !important; text-shadow: 0 0 5px rgba(0, 245, 255, 0.4); }
-.text-danger { color: #FF4D4D !important; }
-.text-warning { color: var(--color-theme-accent-yellow) !important; }
+.text-success { color: var(--color-theme-mint) !important; text-shadow: 0 0 8px rgba(6, 214, 160, 0.4); }
+.text-danger { color: #94A3B8 !important; }
+.text-warning { color: var(--color-theme-accent-blue) !important; }
 
 /* Custom Color Utilities */
 .bg-theme-bg { background-color: var(--color-theme-bg) !important; }
 .bg-theme-light, .bg-theme-header { background-color: var(--color-theme-surface) !important; color: var(--color-text-main) !important; }
-.bg-theme-primary { background-color: var(--color-theme-accent-cyan) !important; color: #0D1117 !important; }
-.bg-theme-secondary { background-color: var(--color-theme-accent-yellow) !important; color: #0D1117 !important; }
+.bg-theme-primary { background-color: var(--color-theme-accent-cyan) !important; color: #091540 !important; }
+.bg-theme-secondary { background-color: var(--color-theme-accent-blue) !important; color: #FFFFFF !important; }
 .bg-theme-dark { background-color: var(--color-theme-bg) !important; color: var(--color-text-main) !important; }
 
-/* Text Utilities (Mapping old class names to new dark theme logic) */
-.text-theme-dark { color: var(--color-text-main) !important; } /* We map -dark to our light text color since it was main text */
-.text-theme-primary { color: var(--color-theme-accent-cyan) !important; }
-.text-theme-secondary { color: var(--color-theme-accent-yellow) !important; }
+/* Text Utilities */
+.text-theme-dark { color: var(--color-text-main) !important; }
+.text-theme-primary { color: var(--color-theme-accent-cyan) !important; text-shadow: 0 0 8px rgba(0, 245, 255, 0.4); }
+.text-theme-secondary { color: var(--color-theme-accent-blue) !important; }
 .text-theme-muted { color: var(--color-text-muted) !important; }
-
-/* In the previous blue theme, we had some purple text used for prices. Let's make prices Cyber Yellow */
-.text-theme-purple, .text-theme-primary { 
-  color: var(--color-theme-accent-yellow) !important; 
-  text-shadow: 0 0 8px rgba(255, 195, 0, 0.3);
-}
 
 /* Border Utilities */
 .border-theme { border-color: var(--color-border) !important; }
 .border-theme.border-dashed { border-style: dashed !important; border-color: var(--color-border) !important; }
 
-/* Buttons */
+/* ===================================================
+   COOL TONE BUTTONS (ปุ่มสีโทนเย็น)
+   =================================================== */
+
+/* 1. Primary Action Button: Cool Neon Cyan / Electric Blue (ปุ่มหลัก: ซื้อสินค้า, ยืนยันคำสั่งซื้อ) */
 .btn-theme-primary {
-  background-color: var(--color-theme-accent-cyan) !important;
-  color: #0D1117 !important;
+  background: linear-gradient(135deg, #00F5FF 0%, #00B4D8 100%) !important;
+  color: #091540 !important;
   border: none;
-  box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
-  transition: all 0.2s ease;
   font-weight: 700;
+  box-shadow: 0 0 12px rgba(0, 245, 255, 0.35);
+  transition: all 0.25s ease;
 }
 .btn-theme-primary:hover {
-  background-color: #00D5DD !important;
-  box-shadow: 0 0 18px rgba(0, 245, 255, 0.6);
+  background: linear-gradient(135deg, #38BDF8 0%, #0284C7 100%) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.6);
   transform: translateY(-2px);
 }
 
+/* 2. Secondary Button: Cool Slate Navy with Ice Blue border (ปุ่มรอง: ใส่ตะกร้า, เมนูนำทาง, ปุ่มย้อนกลับ) */
 .btn-theme-light {
-  background-color: var(--color-theme-surface) !important;
-  color: var(--color-text-main) !important;
-  border: 1px solid var(--color-border);
+  background-color: #1A2642 !important;
+  color: #ABD2FA !important;
+  border: 1px solid #2E4575;
+  font-weight: 500;
+  transition: all 0.25s ease;
 }
 .btn-theme-light:hover {
-  background-color: var(--color-border) !important;
-  color: var(--color-theme-accent-cyan) !important;
+  background-color: #24355A !important;
+  color: #FFFFFF !important;
+  border-color: #00F5FF;
+  box-shadow: 0 0 12px rgba(0, 245, 255, 0.25);
+  transform: translateY(-1px);
 }
 
+/* 3. Outline Button (ปุ่มเส้นขอบโทนเย็น) */
 .btn-outline-theme-primary {
   background-color: transparent !important;
-  color: var(--color-theme-accent-cyan) !important;
-  border: 2px solid var(--color-theme-accent-cyan) !important;
-  transition: all 0.2s ease;
+  color: #00F5FF !important;
+  border: 1.5px solid #00F5FF !important;
+  transition: all 0.25s ease;
 }
 .btn-outline-theme-primary:hover {
-  background-color: var(--color-theme-accent-cyan) !important;
-  color: #0D1117 !important;
-  box-shadow: 0 0 15px rgba(0, 245, 255, 0.5);
+  background: linear-gradient(135deg, #00F5FF 0%, #00B4D8 100%) !important;
+  color: #091540 !important;
+  box-shadow: 0 0 16px rgba(0, 245, 255, 0.5);
+  transform: translateY(-1px);
 }
 
-/* Secondary/Warning Button */
+/* 4. Special / Low Stock Button: Cool Indigo / Periwinkle (ปุ่มสินค้าใกล้หมด โทนเย็นคราม-ม่วงฟ้า) */
 .btn-theme-orange {
-  background-color: var(--color-theme-accent-yellow) !important; 
-  color: #0D1117 !important;
+  background: linear-gradient(135deg, #7692FF 0%, #536DFE 100%) !important;
+  color: #FFFFFF !important;
   border: none;
-  font-weight: bold;
-  box-shadow: 0 0 10px rgba(255, 195, 0, 0.3);
-  transition: all 0.2s ease;
+  font-weight: 700;
+  box-shadow: 0 0 12px rgba(118, 146, 255, 0.4);
+  transition: all 0.25s ease;
 }
 .btn-theme-orange:hover {
-  background-color: #E6B000 !important;
-  box-shadow: 0 0 15px rgba(255, 195, 0, 0.5);
+  background: linear-gradient(135deg, #8EA5FF 0%, #3D5AFE 100%) !important;
+  box-shadow: 0 0 18px rgba(118, 146, 255, 0.65);
   transform: translateY(-2px);
 }
 
+/* 5. Disabled / Out of Stock Button: Cool Muted Slate (ปุ่มสินค้าหมด โทนเย็นเทาเข้มหม่น) */
 .btn-theme-danger {
-  background-color: #FF4D4D !important; 
-  color: white !important;
-  border: none;
-  transition: all 0.2s;
+  background-color: #26334D !important;
+  color: #94A3B8 !important;
+  border: 1px solid #334155;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 .btn-theme-danger:hover {
-  background-color: #FF3333 !important;
-  box-shadow: 0 0 12px rgba(255, 77, 77, 0.4);
+  background-color: #26334D !important;
+  color: #94A3B8 !important;
+}
+
+/* Cool Badges */
+.badge-cool-indigo {
+  background: linear-gradient(135deg, #7692FF 0%, #536DFE 100%) !important;
+  color: #FFFFFF !important;
 }
 
 /* Cards */
@@ -162,18 +184,57 @@ h1, h2, h3, h4, h5, h6 {
   animation: bounce-soft 1s infinite;
 }
 
-/* Clean Custom Scrollbar (Dark mode) */
+/* Clean Custom Scrollbar (Cool dark mode) */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 .custom-scrollbar::-webkit-scrollbar-track {
   background: var(--color-theme-bg); 
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: var(--color-theme-surface); 
+  background: #1E2B48; 
   border-radius: 10px;
   border: 1px solid var(--color-border);
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: var(--color-theme-accent-cyan); 
 }
+
+/* Compact & Responsive Cart Drawer */
+.cart-drawer-box {
+  width: 350px;
+  max-width: 88vw;
+  animation: slideDrawer 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Review Form & Inputs Styling */
+.form-control-dark {
+  background-color: #111B30 !important;
+  color: #FFFFFF !important;
+  border: 1px solid #253960 !important;
+}
+.form-control-dark:focus {
+  background-color: #111B30 !important;
+  color: #FFFFFF !important;
+  border-color: #00F5FF !important;
+  box-shadow: 0 0 10px rgba(0, 245, 255, 0.3) !important;
+}
+.form-control-dark::placeholder {
+  color: #8397B8 !important;
+  opacity: 1;
+}
+
+/* Star Rating Hover Effects */
+.star-btn {
+  color: #3B4E74;
+  transition: transform 0.15s ease, color 0.15s ease;
+  cursor: pointer;
+}
+.star-btn:hover {
+  transform: scale(1.2);
+}
+.star-active {
+  color: #FFD700 !important;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
