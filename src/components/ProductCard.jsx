@@ -76,7 +76,12 @@ export default function ProductCard({ product, onOpenDetail, onAddToCart, onBuyN
                 {/* ปุ่มซ้าย: ใส่ตะกร้า */}
                 <div className="col-6">
                   <button
-                    onClick={(e) => { e.stopPropagation(); onAddToCart(product, 1); }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (typeof onAddToCart === 'function') {
+                        onAddToCart(product, 1);
+                      }
+                    }}
                     className="btn btn-theme-light btn-sm w-100 rounded-3"
                     style={{ fontSize: '0.78rem' }}
                     title="ใส่ตะกร้า"
@@ -87,7 +92,16 @@ export default function ProductCard({ product, onOpenDetail, onAddToCart, onBuyN
                 {/* ปุ่มขวา: ซื้อสินค้าเลย */}
                 <div className="col-6">
                   <button
-                    onClick={(e) => { e.stopPropagation(); onBuyNow(product); }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (typeof onBuyNow === 'function') {
+                        onBuyNow(product);
+                      } else if (typeof onAddToCart === 'function') {
+                        onAddToCart(product, 1);
+                      } else if (typeof onOpenDetail === 'function') {
+                        onOpenDetail(product);
+                      }
+                    }}
                     className={`btn ${isLowStock ? 'btn-theme-orange' : 'btn-theme-primary'} btn-sm w-100 rounded-3`}
                     style={{ fontSize: '0.78rem' }}
                     title="ซื้อสินค้าเลย"
